@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f6f8f4" />
+  <meta name="description" content="GreenGrid helps teams monitor, optimize, and manage energy across every facility." />
+  <title>GreenGrid — Energy, in better balance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#17352b;--muted:#65776e;--green:#1f6b4e;--lime:#c8f169;--pale:#eef4e9;--line:#e4eae2;--white:#fff;--bg:#f7f9f5;--shadow:0 18px 60px rgba(26,62,44,.10)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 8% 18%,rgba(196,224,174,.28),transparent 34%),radial-gradient(ellipse at 92% 76%,rgba(185,215,167,.22),transparent 32%),linear-gradient(135deg,#f8faf5 0%,#f0f6ec 48%,#f8faf5 100%);background-attachment:fixed;color:var(--ink);font-family:"DM Sans",sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}.wrap{width:min(1160px,calc(100% - 48px));margin:auto}
+    /* Subtle robotics-inspired energy interface background */
+    body{background-color:#f5f8f4;background-image:radial-gradient(ellipse at 12% 8%,rgba(157,199,143,.16),transparent 34%),radial-gradient(ellipse at 88% 32%,rgba(126,177,156,.12),transparent 30%),linear-gradient(rgba(41,101,75,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(41,101,75,.035) 1px,transparent 1px);background-size:auto,auto,34px 34px,34px 34px;background-attachment:fixed}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.32;background:radial-gradient(circle at 8% 22%,#75a98a 0 2px,transparent 3px),radial-gradient(circle at 92% 67%,#75a98a 0 2px,transparent 3px),linear-gradient(135deg,transparent 0 49.8%,rgba(79,139,102,.13) 50%,transparent 50.2%);background-size:100% 100%,100% 100%,180px 180px}
+    body>header,body>main,body>footer{position:relative;z-index:1}
+    .hero{position:relative}.hero:before{content:"";position:absolute;inset:18px -20px 10px;border:1px solid rgba(68,124,87,.10);border-radius:28px;pointer-events:none;mask-image:linear-gradient(90deg,black,transparent 85%);}
+    .feature,.dashboard,.cta-card,.platform-visual{backdrop-filter:blur(8px)}
+    .feature{background:rgba(255,255,255,.88);border-color:rgba(91,139,101,.18)}
+    .dashboard{background:rgba(255,255,255,.91);border-color:rgba(91,139,101,.22)}
+    .eyebrow{box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+    .platform{background-color:#153b30;background-image:linear-gradient(rgba(192,230,196,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(192,230,196,.035) 1px,transparent 1px),radial-gradient(ellipse at 80% 10%,rgba(99,169,123,.20),transparent 45%);background-size:30px 30px,30px 30px,auto}
+    .platform-visual{background:rgba(33,75,59,.88)}
+    @media(prefers-reduced-motion:reduce){body{background-attachment:scroll}}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px;font:800 22px Manrope,sans-serif;letter-spacing:-1px}.brand-mark{width:34px;height:34px;border-radius:11px;background:var(--green);display:grid;place-items:center;color:var(--lime)}.brand-mark svg{width:21px}.nav-links{display:flex;gap:34px;align-items:center;color:#52665c;font-size:14px;font-weight:600}.nav-links a:hover{color:var(--green)}.nav-actions{display:flex;align-items:center;gap:20px;font-size:14px;font-weight:600}.login{color:#52665c}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:999px;padding:14px 21px;font-weight:700;font-size:14px;transition:.2s}.btn-dark{background:var(--green);color:#fff;box-shadow:0 7px 18px rgba(31,107,78,.16)}.btn-dark:hover{background:#164f39;transform:translateY(-1px)}.btn-light{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn-light:hover{border-color:#b6c8ba}.menu{display:none;background:none;border:0;color:var(--ink);padding:8px}
+    .hero{padding:70px 0 84px;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:48px}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #dce8d7;background:#f0f6eb;border-radius:30px;padding:8px 12px;color:#376a4e;font-size:12px;font-weight:700;letter-spacing:.3px}.eyebrow span{width:7px;height:7px;border-radius:50%;background:#8fbd4a;box-shadow:0 0 0 4px #e2efcf}.hero h1{font:700 clamp(42px,5.2vw,68px)/1.06 Manrope,sans-serif;letter-spacing:-3.8px;margin:22px 0 20px;max-width:650px}.hero h1 em{font-style:normal;color:#62935c}.hero-copy{color:var(--muted);font-size:17px;line-height:1.75;max-width:500px;margin:0 0 28px}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}.proof{display:flex;align-items:center;gap:14px;margin-top:35px;color:#718078;font-size:12px}.avatars{display:flex;padding-left:5px}.avatar{width:29px;height:29px;border-radius:50%;border:2px solid var(--bg);margin-left:-6px;display:grid;place-items:center;font-size:10px;font-weight:700;color:#fff;background:#8cae9b}.avatar:nth-child(2){background:#c18b6b}.avatar:nth-child(3){background:#5c7e70}.avatar:nth-child(4){background:#b5a56d}.proof strong{color:var(--ink)}
+    .visual{position:relative;min-height:490px;display:flex;align-items:center;justify-content:center}.orb{position:absolute;width:430px;height:430px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#e9f5d8 0,#e7f0df 42%,#dbe9d7 70%,#d1e2d2 100%);opacity:.9}.dashboard{position:relative;width:min(100%,510px);background:rgba(255,255,255,.94);border:1px solid #e7ede5;border-radius:19px;box-shadow:0 25px 80px rgba(35,69,48,.16);padding:20px;transform:rotate(-2deg);z-index:1}.dash-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.dash-title{font:700 14px Manrope}.dash-sub{font-size:10px;color:#91a096;margin-top:4px}.live{display:flex;align-items:center;gap:5px;background:#edf7e9;color:#4c8753;border-radius:20px;padding:6px 9px;font-size:10px;font-weight:700}.live:before{content:"";width:6px;height:6px;background:#75b85d;border-radius:50%}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.metric{border:1px solid #edf0eb;border-radius:11px;padding:12px 11px}.metric-label{font-size:10px;color:#7d8c83}.metric-value{font:700 20px Manrope;letter-spacing:-.7px;margin:7px 0 4px}.metric-foot{font-size:9px;color:#5e9c69}.metric-foot.neutral{color:#9aa69e}.chart-box{margin-top:12px;border:1px solid #edf0eb;border-radius:12px;padding:14px 13px 9px}.chart-head{display:flex;justify-content:space-between;align-items:center}.chart-head strong{font-size:11px}.chart-head span{font-size:9px;color:#839187}.chart{width:100%;height:155px;margin-top:10px;overflow:visible}.chart-grid{stroke:#e9eee8;stroke-width:1;stroke-dasharray:3 4}.chart-area{fill:url(#area)}.chart-line{fill:none;stroke:#4e9568;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}.chart-line2{fill:none;stroke:#b5d76e;stroke-width:2;stroke-dasharray:4 4}.float-card{position:absolute;z-index:2;background:#fff;border:1px solid #edf0eb;box-shadow:var(--shadow);border-radius:13px;padding:13px 15px}.float-top{top:48px;right:-12px;transform:rotate(3deg)}.float-bottom{bottom:48px;left:-15px;transform:rotate(2deg)}.float-label{font-size:10px;color:#859389}.float-value{font:700 18px Manrope;margin-top:5px}.float-value small{font:600 10px "DM Sans";color:#5d9b65}.energy-icon{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:9px;background:#eff6e5;color:#629650;margin-right:8px;vertical-align:middle}
+    .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:25px 0 28px;text-align:center}.trust p{font-size:11px;text-transform:uppercase;letter-spacing:1.6px;color:#91a096;font-weight:700;margin:0 0 20px}.logos{display:flex;justify-content:space-around;align-items:center;gap:24px;flex-wrap:wrap;color:#8b9a90;font:800 17px Manrope;letter-spacing:-.5px}.logos span{display:flex;align-items:center;gap:7px}.logos i{font-style:normal;font-size:20px}
+    section{scroll-margin-top:30px}.section{padding:105px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 48px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#6e9a64;font-weight:800}.section h2{font:700 clamp(32px,4vw,46px)/1.14 Manrope;letter-spacing:-2px;margin:13px 0 14px}.section-head p{color:var(--muted);font-size:16px;line-height:1.7;margin:0}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.feature{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;min-height:235px;transition:.25s}.feature:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:#d6e3d5}.feature-icon{width:45px;height:45px;border-radius:13px;background:#eff6e9;color:#4c8857;display:grid;place-items:center;margin-bottom:23px}.feature-icon svg{width:22px;height:22px}.feature h3{font:700 17px Manrope;margin:0 0 10px}.feature p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+    .platform{background:#183e30;color:#fff;position:relative;overflow:hidden}.platform:before{content:"";position:absolute;width:500px;height:500px;border:1px solid rgba(255,255,255,.07);border-radius:50%;right:-130px;top:-180px;box-shadow:0 0 0 55px rgba(255,255,255,.025),0 0 0 110px rgba(255,255,255,.02)}.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;position:relative}.platform .kicker{color:#b4d77a}.platform h2{font-size:43px}.platform-copy{color:#c1d0c7;line-height:1.8;font-size:15px;max-width:490px}.check-list{display:grid;gap:16px;margin:27px 0 30px}.check{display:flex;align-items:center;gap:12px;font-size:14px;color:#e5eee8}.check b{width:22px;height:22px;display:grid;place-items:center;background:rgba(200,241,105,.15);color:var(--lime);border-radius:50%;font-size:12px}.platform-visual{background:#214b3b;border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:20px;box-shadow:0 25px 70px rgba(0,0,0,.16)}.platform-visual .dash-title{color:#fff}.platform-visual .dash-sub{color:#adc3b5}.usage-row{display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px;font-size:12px;color:#d6e4db}.usage-row strong{font-size:13px}.bar{height:9px;border-radius:10px;background:#3b6654;overflow:hidden;margin-bottom:17px}.bar span{display:block;height:100%;border-radius:10px;background:linear-gradient(90deg,#a9d76b,#d4f18c)}.facility-list{display:grid;gap:9px}.facility{background:#2b5645;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#dce9e1}.facility small{display:block;color:#a8c1b1;margin-top:4px}.status{color:#c9ef82;font-size:10px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:54px 0;border-bottom:1px solid var(--line)}.stat{text-align:center;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{font:800 34px Manrope;letter-spacing:-1.5px}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:7px}
+    .cta{padding:85px 0}.cta-card{background:#eaf3e4;border:1px solid #dce9d6;border-radius:22px;padding:58px 30px;text-align:center;position:relative;overflow:hidden}.cta-card:before,.cta-card:after{content:"";position:absolute;border:1px solid rgba(83,136,75,.12);width:240px;height:240px;border-radius:50%;top:-125px;left:-75px}.cta-card:after{left:auto;top:auto;right:-90px;bottom:-160px;width:330px;height:330px}.cta-card h2{font:700 clamp(30px,4vw,44px)/1.15 Manrope;letter-spacing:-2px;margin:0 0 14px;position:relative}.cta-card p{color:#65796b;font-size:15px;margin:0 auto 26px;max-width:500px;line-height:1.7;position:relative}.cta-card .btn{position:relative}
+    footer{border-top:1px solid var(--line);padding:30px 0 35px}.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px}.footer-note{font-size:12px;color:#8a998f}.footer-links{display:flex;gap:22px;color:#718078;font-size:12px}
+    @media(max-width:900px){.nav-links{gap:18px}.hero{gap:25px}.hero h1{letter-spacing:-2.8px}.visual{min-height:420px}.orb{width:350px;height:350px}.dashboard{padding:14px}.float-top{right:-5px}.float-bottom{left:-5px}.platform-grid{gap:35px}}
+    @media(max-width:700px){.wrap{width:min(100% - 36px,520px)}.nav{height:70px}.nav-links,.nav-actions{display:none}.menu{display:block}.nav.mobile-open{position:relative;z-index:5}.nav.mobile-open .nav-links{display:flex;position:absolute;top:62px;left:0;right:0;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:14px;padding:18px;flex-direction:column;align-items:flex-start;gap:18px}.hero{grid-template-columns:1fr;padding:45px 0 50px;gap:20px}.hero h1{font-size:48px;letter-spacing:-2.7px}.hero-copy{font-size:15px}.visual{min-height:390px;margin:0 -6px}.orb{width:320px;height:320px}.dashboard{width:100%;max-width:470px}.float-top{top:20px;right:0}.float-bottom{bottom:16px;left:0}.trust{padding:22px 0}.logos{font-size:14px;gap:20px}.section{padding:75px 0}.section-head{margin-bottom:30px}.features{grid-template-columns:1fr}.feature{min-height:0;padding:23px}.platform-grid{grid-template-columns:1fr;gap:35px}.platform h2{font-size:36px}.platform-visual{padding:15px}.stats{grid-template-columns:repeat(2,1fr);gap:26px 10px;padding:38px 0}.stat:nth-child(2){border:0}.stat strong{font-size:29px}.cta{padding:60px 0}.cta-card{padding:45px 20px}.footer-inner{flex-direction:column;align-items:flex-start}.footer-links{flex-wrap:wrap}}
+    @media(max-width:390px){.hero h1{font-size:42px}.metrics{gap:5px}.metric{padding:10px 7px}.metric-value{font-size:17px}.visual{min-height:355px}.float-card{padding:10px 12px}.float-top{top:5px}.float-bottom{bottom:0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+  </style>
+
+  <style>
+    /* Intro experience */
+    .intro-screen{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;background:linear-gradient(180deg,#173c30 0%,#23583f 62%,#83a86a 62%,#a9c18a 100%);color:#fff;transition:opacity .75s ease,visibility .75s ease}
+    .intro-screen:before{content:"";position:absolute;left:-10%;right:-10%;bottom:26%;height:19%;background:#3f7750;border-radius:50% 50% 0 0/35% 35% 0 0;opacity:.65}
+    .intro-screen:after{content:"";position:absolute;left:-8%;right:-8%;bottom:18%;height:17%;background:#5c8c59;border-radius:50% 50% 0 0/40% 40% 0 0;opacity:.8}
+    .intro-screen.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+    .intro-content{position:relative;z-index:2;text-align:center;width:min(760px,calc(100% - 32px));padding:25px 0 50px}
+    .intro-brand{display:inline-flex;align-items:center;gap:10px;font:800 22px Manrope,sans-serif;letter-spacing:-1px;color:#f7ffef}
+    .intro-brand .brand-mark{background:#c8f169;color:#1b4a35}
+    .intro-content h1{font:700 clamp(42px,7vw,78px)/1.02 Manrope,sans-serif;letter-spacing:-4px;margin:22px 0 12px;color:#f8fff4}
+    .intro-content h1 span{color:#c8f169}
+    .intro-content p{font-size:15px;line-height:1.7;color:#d5e5d6;max-width:470px;margin:0 auto 25px}
+    .windmills{position:relative;height:270px;width:min(660px,100%);margin:0 auto -5px;perspective:900px;transform-style:preserve-3d}
+    .windmills:after{content:"";position:absolute;bottom:0;left:5%;right:5%;height:34px;background:linear-gradient(180deg,#8eb577,#537d4b);clip-path:polygon(0 100%,12% 35%,28% 65%,47% 8%,68% 65%,84% 30%,100% 100%);opacity:.9;z-index:0}
+    .windmills:before{content:"";position:absolute;inset:12% 0 25%;background:radial-gradient(ellipse at 20% 30%,#fff8 0 2px,transparent 3px),radial-gradient(ellipse at 80% 18%,#fff7 0 2px,transparent 3px);opacity:.6}
+    .turbine{position:absolute;bottom:0;width:150px;height:255px;transform-origin:bottom center;transform-style:preserve-3d;filter:drop-shadow(12px 8px 7px #143b2d55);z-index:1}
+    .turbine.one{left:18%;transform:scale(.82)}.turbine.two{right:16%;transform:scale(1.08)}
+    .tower{position:absolute;bottom:0;left:calc(50% - 7px);width:14px;height:174px;background:linear-gradient(90deg,#8eaa98 0%,#f3fff0 35%,#d4e6d5 70%,#7e9d88 100%);clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);filter:drop-shadow(4px 4px 3px #163d2b66)}
+    .hub{position:absolute;left:50%;bottom:166px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#eaffd7;border:4px solid #6b9971;z-index:3}
+    .blades{position:absolute;left:50%;bottom:174px;width:0;height:0;animation:spin 12s linear infinite;transform-style:preserve-3d;filter:drop-shadow(3px 4px 2px #183c2c66)}
+    .blade{position:absolute;left:-6px;bottom:0;width:12px;height:91px;background:linear-gradient(90deg,#8ba995 0%,#f8fff7 35%,#dcebdd 70%,#769681 100%);clip-path:polygon(40% 0,60% 0,100% 100%,0 100%);transform-origin:50% 100%;border-radius:5px 5px 0 0}
+    .blade:nth-child(1){transform:rotate(0deg)}.blade:nth-child(2){transform:rotate(120deg)}.blade:nth-child(3){transform:rotate(240deg)}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .intro-enter{border:0;border-radius:999px;background:#c8f169;color:#1a4934;padding:15px 25px;font-weight:800;font-size:14px;box-shadow:0 9px 25px #102f2455;transition:transform .2s,background .2s}
+    .intro-enter:hover{transform:translateY(-2px);background:#d7fa8c}.intro-hint{font-size:11px!important;letter-spacing:1.2px;text-transform:uppercase;color:#c4d8c7!important;margin-top:16px!important;margin-bottom:0!important}
+    @media(max-width:600px){.windmills{height:220px}.turbine{transform:scale(.68)!important}.turbine.one{left:7%}.turbine.two{right:5%}.intro-content h1{letter-spacing:-2.5px}.intro-content{padding-bottom:20px}}
+    @media(prefers-reduced-motion:reduce){.blades{animation:none}.intro-screen{transition:none}}
+    /* Cinematic landscape intro: layered hills, atmospheric sky and dimensional turbines */
+    .intro-screen{isolation:isolate;background:linear-gradient(180deg,#9bc9db 0%,#d7e9df 42%,#f2e9c9 66%,#a6c28a 100%);}
+    .intro-screen:before{content:"";position:absolute;inset:auto -8% 0;height:48%;z-index:-1;background:linear-gradient(170deg,transparent 0 16%,#789b69 16.2% 100%);clip-path:polygon(0 38%,12% 20%,24% 35%,38% 7%,52% 28%,66% 10%,80% 32%,91% 12%,100% 24%,100% 100%,0 100%);opacity:.9}
+    .intro-screen:after{content:"";position:absolute;inset:auto -8% 0;height:34%;z-index:-1;background:linear-gradient(180deg,#67945b,#2e6746);clip-path:polygon(0 42%,15% 20%,30% 38%,46% 10%,60% 36%,76% 13%,90% 35%,100% 20%,100% 100%,0 100%);}
+    .intro-screen .intro-content{padding-top:18px;text-shadow:0 2px 18px rgba(22,61,42,.22)}
+    .intro-screen .intro-content h1{ text-shadow:0 3px 24px rgba(21,58,39,.25)}
+    .intro-screen .intro-content p{color:#f7fff1;text-shadow:0 1px 9px rgba(19,52,36,.4)}
+    .windmills{height:clamp(250px,37vh,360px);width:min(850px,100%);margin:0 auto -4px;perspective:1100px;}
+    .windmills:after{left:-10%;right:-10%;height:30%;background:linear-gradient(180deg,#9cbd73,#477a4a);clip-path:polygon(0 100%,0 68%,12% 43%,25% 62%,40% 12%,56% 49%,70% 25%,86% 55%,100% 22%,100% 100%);filter:drop-shadow(0 -9px 15px #fff4)}
+    .windmills:before{inset:0;background:radial-gradient(ellipse at 16% 16%,rgba(255,255,255,.7) 0 1px,transparent 2px),radial-gradient(ellipse at 83% 25%,rgba(255,255,255,.5) 0 1px,transparent 2px);}
+    .turbine{width:160px;height:100%;filter:drop-shadow(15px 12px 9px rgba(25,57,37,.38));}
+    .turbine.one{left:16%;transform:scale(.86)}.turbine.two{right:15%;transform:scale(1.12)}
+    .tower{left:calc(50% - 9px);width:18px;height:66%;background:linear-gradient(90deg,#6d8b7d 0%,#f5fff5 24%,#d9e9e1 58%,#769387 100%);clip-path:polygon(39% 0,61% 0,100% 100%,0 100%);}
+    .blades{bottom:65%;animation:spin 8s linear infinite;}
+    .blade{width:15px;height:clamp(78px,12vh,115px);left:-7px;background:linear-gradient(90deg,#708f80 0%,#f8fff8 28%,#dcebe4 70%,#759487 100%);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);border-radius:50% 50% 3px 3px;}
+    .hub{bottom:calc(65% - 8px);width:20px;height:20px;margin-left:-10px;background:radial-gradient(circle at 35% 30%,#fff,#9db8aa 65%,#547667);border:3px solid #e8f4e8;}
+    .intro-enter{display:inline-flex;align-items:center;gap:16px;padding:15px 20px 15px 26px;background:#c8f169;color:#163e2d;box-shadow:0 12px 30px rgba(14,50,33,.3);text-shadow:none}
+    .intro-enter .arrow{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#1b573c;color:#d8f99c;font-size:22px;line-height:1;animation:arrow-nudge 1.35s ease-in-out infinite}
+    @keyframes arrow-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+    .intro-enter:hover .arrow{animation-duration:.55s}
+    .intro-hint{letter-spacing:1.4px}
+    @media(max-width:600px){.intro-screen .intro-content{padding-top:10px}.windmills{height:230px}.turbine{transform:scale(.72)!important}.turbine.one{left:3%}.turbine.two{right:2%}.intro-content h1{letter-spacing:-2.5px}}
+    @media(prefers-reduced-motion:reduce){.intro-enter .arrow{animation:none}}
+    /* Wide, photoreal-inspired wind-farm panorama with layered fields and a full turbine horizon */
+    .intro-screen{background:#a9d2df;isolation:isolate}
+    .intro-screen:before,.intro-screen:after{display:none}
+    .landscape-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:linear-gradient(180deg,#8fc2d5 0%,#c8e1df 39%,#f0e5c7 66%,#7d9f61 100%)}
+    .landscape-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,54,44,.02) 25%,rgba(22,66,40,.06) 55%,rgba(12,48,29,.2) 100%),linear-gradient(90deg,rgba(10,42,35,.14),transparent 25%,transparent 75%,rgba(10,42,35,.12));pointer-events:none}
+    .landscape-bg svg{width:100%;height:100%;display:block}
+    .landscape-bg .distant-blades{transform-box:fill-box;transform-origin:center;animation:spin 22s linear infinite}
+    .landscape-bg .mid-blades{transform-box:fill-box;transform-origin:center;animation:spin 16s linear infinite}
+    .landscape-bg .near-blades{transform-box:fill-box;transform-origin:center;animation:spin 12s linear infinite}
+    .landscape-bg .turbine-shadow{filter:drop-shadow(3px 5px 3px rgba(27,55,35,.22))}
+    .intro-content{z-index:2}
+    .intro-content h1,.intro-content p,.intro-brand{ text-shadow:0 2px 14px rgba(14,49,37,.5)!important}
+    .intro-content h1 span{color:#d8f58d}
+    .windmills{filter:drop-shadow(0 12px 12px rgba(19,49,31,.24))}
+    @media(max-width:600px){.landscape-bg svg{width:180%;max-width:none;transform:translateX(-22%)}}
+    @media(prefers-reduced-motion:reduce){.landscape-bg .distant-blades,.landscape-bg .mid-blades,.landscape-bg .near-blades{animation:none}}
+    .intro-actions{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap}
+    .intro-dashboard{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(246,255,239,.7);border-radius:999px;padding:14px 22px;background:rgba(244,255,239,.16);backdrop-filter:blur(8px);color:#fff;font-weight:700;font-size:14px;transition:background .2s,transform .2s}
+    .intro-dashboard:hover{background:rgba(244,255,239,.27);transform:translateY(-2px)}
+    .intro-dashboard .mini-icon{font-size:17px;color:#d8f58d}
+    @media(max-width:600px){.intro-actions{gap:9px}.intro-enter,.intro-dashboard{padding:13px 17px;font-size:13px}}
+    /* Dynamic scenic atmosphere: drifting clouds, parallax fields, and a gentle camera glide */
+    .landscape-bg svg{transform-origin:50% 55%;animation:landscape-drift 28s ease-in-out infinite alternate;will-change:transform}
+    .landscape-bg .cloud-bank{animation:cloud-drift 48s linear infinite alternate;transform-box:fill-box;transform-origin:center}
+    .landscape-bg .cloud-bank.cloud-slow{animation-duration:68s;animation-direction:alternate-reverse}
+    .landscape-bg .field-shimmer{animation:field-shimmer 9s ease-in-out infinite alternate}
+    .landscape-bg .foreground-grass{animation:grass-sway 5s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:bottom center}
+    .landscape-bg:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(244,255,250,.08),transparent 42%,rgba(21,67,36,.1));}
+    @keyframes landscape-drift{from{transform:scale(1.015) translate3d(-.4%,0,0)}to{transform:scale(1.07) translate3d(.5%,-.4%,0)}}
+    @keyframes cloud-drift{from{transform:translateX(-5%)}to{transform:translateX(7%)}}
+    @keyframes field-shimmer{from{opacity:.12}to{opacity:.32}}
+    @keyframes grass-sway{from{transform:skewX(-2deg)}to{transform:skewX(2deg)}}
+    @media(max-width:600px){.landscape-bg svg{width:180%;max-width:none;transform:translateX(-22%);animation:landscape-drift-mobile 30s ease-in-out infinite alternate}}
+    @keyframes landscape-drift-mobile{from{translate:-23% 0;scale:1.02}to{translate:-20% -.3%;scale:1.07}}
+    @media(prefers-reduced-motion:reduce){.landscape-bg svg,.landscape-bg .cloud-bank,.landscape-bg .field-shimmer,.landscape-bg .foreground-grass{animation:none!important}}
+  </style>
+
+
+  <style>
+    /* User-provided wind-farm footage as the immersive intro background. */
+    .intro-screen{background:#315b3e!important;isolation:isolate}
+    .intro-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0}
+    .intro-screen:before{content:"";display:block;position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,39,29,.24) 0%,rgba(13,50,31,.16) 38%,rgba(12,43,26,.48) 100%),linear-gradient(90deg,rgba(9,38,28,.28),transparent 45%,rgba(9,38,28,.12));pointer-events:none}
+    .intro-screen:after{display:none}
+    .landscape-bg{display:none}
+    .intro-content{z-index:2}
+    .windmills{display:none}
+    @media(prefers-reduced-motion:reduce){.intro-video{display:none}.intro-screen{background:linear-gradient(180deg,#9bc9db,#477a4a)!important}}
+  </style>
+</head>
+<body>
+
+  <section class="intro-screen" id="intro" aria-label="GreenGrid introduction">
+    <video class="intro-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <source src="windmill-video.mp4" type="video/mp4">
+    </video>
+    <div class="landscape-bg" aria-hidden="true">
+      <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#83b9d0"/><stop offset=".52" stop-color="#d7e8dc"/><stop offset="1" stop-color="#f3e6c7"/></linearGradient>
+          <linearGradient id="fieldBack" x2="0" y2="1"><stop stop-color="#9ebc7c"/><stop offset="1" stop-color="#668d50"/></linearGradient>
+          <linearGradient id="fieldFront" x2="0" y2="1"><stop stop-color="#7fa45c"/><stop offset="1" stop-color="#315f39"/></linearGradient>
+          <linearGradient id="towerMetal" x2="1"><stop stop-color="#718d83"/><stop offset=".25" stop-color="#f4f5e9"/><stop offset=".62" stop-color="#dce7df"/><stop offset="1" stop-color="#668276"/></linearGradient>
+          <linearGradient id="bladeMetal" x2="1"><stop stop-color="#a6bdb1"/><stop offset=".38" stop-color="#f9fbf4"/><stop offset="1" stop-color="#839c90"/></linearGradient>
+          <g id="windTurbine" class="turbine-shadow">
+            <path d="M-5 0 L-2 -132 L3 -132 L8 0Z" fill="url(#towerMetal)" stroke="#718a7e" stroke-width=".8"/>
+            <g class="distant-blades"><path d="M0 -132 Q-5 -146 -5 -151 L-3 -218 Q0 -227 3 -218 L6 -151 Q5 -143 0 -132Z" fill="url(#bladeMetal)" stroke="#829a8e" stroke-width="1"/><path d="M0 -132 Q-5 -146 -5 -151 L-3 -218 Q0 -227 3 -218 L6 -151 Q5 -143 0 -132Z" fill="url(#bladeMetal)" stroke="#829a8e" stroke-width="1" transform="rotate(120 0 -132)"/><path d="M0 -132 Q-5 -146 -5 -151 L-3 -218 Q0 -227 3 -218 L6 -151 Q5 -143 0 -132Z" fill="url(#bladeMetal)" stroke="#829a8e" stroke-width="1" transform="rotate(240 0 -132)"/></g>
+            <circle cy="-132" r="7" fill="#f2f5e9" stroke="#718b7e" stroke-width="2"/>
+          </g>
+        </defs>
+        <rect width="1600" height="900" fill="url(#sky)"/>
+        <circle cx="1240" cy="190" r="72" fill="#fff4d2" opacity=".52"/><circle cx="1240" cy="190" r="112" fill="#fff4d2" opacity=".12"/>
+        <g class="cloud-bank" fill="#fff" opacity=".34"><ellipse cx="280" cy="190" rx="145" ry="25"/><ellipse cx="350" cy="178" rx="82" ry="35"/><ellipse cx="870" cy="130" rx="125" ry="20"/><ellipse cx="920" cy="118" rx="70" ry="30"/></g>
+        <g class="cloud-bank cloud-slow" fill="#fff" opacity=".23"><ellipse cx="80" cy="290" rx="112" ry="17"/><ellipse cx="135" cy="278" rx="64" ry="26"/><ellipse cx="1320" cy="280" rx="142" ry="19"/><ellipse cx="1380" cy="267" rx="78" ry="27"/></g>
+        <path d="M0 490 Q180 390 350 470 T720 440 T1100 460 T1600 420 V900 H0Z" fill="#a3bb93" opacity=".8"/>
+        <path d="M0 555 Q200 445 390 535 T790 510 T1190 530 T1600 475 V900 H0Z" fill="#789b68"/>
+        <g opacity=".62" fill="#e2e7bd"><path d="M0 600 Q260 520 470 595 T900 565 T1300 570 T1600 540 V900 H0Z"/></g>
+        <!-- distant wind farm -->
+        <g opacity=".55" fill="url(#towerMetal)" stroke="#708d7c" stroke-width="1">
+          <g transform="translate(130 505) scale(.48)"><use href="#windTurbine"/></g>
+          <g transform="translate(340 485) scale(.56)"><use href="#windTurbine"/></g>
+          <g transform="translate(560 500) scale(.43)"><use href="#windTurbine"/></g>
+          <g transform="translate(790 480) scale(.58)"><use href="#windTurbine"/></g>
+          <g transform="translate(1010 505) scale(.46)"><use href="#windTurbine"/></g>
+          <g transform="translate(1250 480) scale(.58)"><use href="#windTurbine"/></g>
+          <g transform="translate(1480 505) scale(.45)"><use href="#windTurbine"/></g>
+        </g>
+        <path d="M0 650 Q180 560 370 635 T760 615 T1150 620 T1600 580 V900 H0Z" fill="url(#fieldBack)"/>
+        <path d="M0 720 Q250 620 470 700 T900 680 T1300 690 T1600 640 V900 H0Z" fill="url(#fieldFront)"/>
+        <g opacity=".22" stroke="#d4df9b" stroke-width="3" fill="none"><path d="M0 780 Q350 690 700 770 T1400 750 T1800 710"/><path d="M-80 840 Q300 745 700 830 T1450 805 T1800 770"/><path d="M-50 890 Q400 810 800 875 T1600 850"/></g>
+        <!-- larger turbines in the rolling fields -->
+        <g opacity=".88">
+          <g transform="translate(190 705) scale(.85)"><use href="#windTurbine"/></g>
+          <g transform="translate(520 680) scale(1.02)"><use href="#windTurbine"/></g>
+          <g transform="translate(910 710) scale(.78)"><use href="#windTurbine"/></g>
+          <g transform="translate(1240 690) scale(1.08)"><use href="#windTurbine"/></g>
+          <g transform="translate(1510 710) scale(.82)"><use href="#windTurbine"/></g>
+        </g>
+        <path d="M0 820 Q280 755 520 810 T1050 795 T1600 780 V900 H0Z" fill="#315d37" opacity=".55"/>
+        <g class="field-shimmer" stroke="#d9e9a8" stroke-width="2" opacity=".2" fill="none"><path d="M0 760 Q280 690 560 760 T1120 750 T1600 720M0 805 Q260 740 540 810 T1100 795 T1600 770M0 855 Q300 795 620 860 T1220 840 T1600 825"/></g>
+        <g class="foreground-grass" stroke="#b4c77c" stroke-width="2" opacity=".35"><path d="M30 900l35-85m30 85 20-65m80 65 38-95m80 95 25-72m140 72 28-80m90 80 34-95m150 95 24-74m110 74 40-100m140 100 24-74m130 74 40-90m100 90 25-75m100 75 30-85"/></g>
+      </svg>
+    </div>
+    <div class="intro-content">
+      <a class="intro-brand" href="#" aria-label="GreenGrid"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-8 0-14 3-14 10a6 6 0 0 0 6 6c7 0 8-8 8-16Z"/><path d="M4 21c2-5 6-8 12-11"/></svg></span>greengrid</a>
+      <div class="windmills" aria-hidden="true">
+        <div class="turbine one"><div class="tower"></div><div class="blades"><i class="blade"></i><i class="blade"></i><i class="blade"></i></div><div class="hub"></div></div>
+        <div class="turbine two"><div class="tower"></div><div class="blades"><i class="blade"></i><i class="blade"></i><i class="blade"></i></div><div class="hub"></div></div>
+      </div>
+      <h1>Powering a <span>greener</span><br>tomorrow.</h1>
+      <p>Smarter energy starts with a clearer view. Discover a more balanced way to monitor, manage, and optimize every watt.</p>
+      <div class="intro-actions">
+        <button class="intro-enter" id="enter-site"><span>Enter website</span><span class="arrow" aria-hidden="true">→</span></button>
+        <button class="intro-dashboard" id="view-dashboard"><span class="mini-icon" aria-hidden="true">▦</span><span>View feature dashboard</span><span aria-hidden="true">↗</span></button>
+      </div>
+      <p class="intro-hint">Press Enter or follow the arrow to explore</p>
+    </div>
+  </section>
+
+  <header class="wrap">
+    <nav class="nav" id="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="GreenGrid home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-8 0-14 3-14 10a6 6 0 0 0 6 6c7 0 8-8 8-16Z"/><path d="M4 21c2-5 6-8 12-11"/></svg></span>greengrid</a>
+      <div class="nav-links"><a href="#platform">Platform</a><a href="#solutions">Solutions</a><a href="#impact">Impact</a><a href="#about">About</a><a href="#" id="intro-link">↶ Intro</a></div>
+      <div class="nav-actions"><a class="login" href="#contact">Log in</a><a class="btn btn-dark" href="#contact">Book a demo <span>↗</span></a></div>
+      <button class="menu" id="menu" aria-label="Toggle navigation" aria-expanded="false"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </nav>
+  </header>
+  <main>
+    <section class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow"><span></span> ENERGY MANAGEMENT, REIMAGINED</div>
+        <h1>Energy, in<br><em>better balance.</em></h1>
+        <p class="hero-copy">One clear view of every kilowatt. GreenGrid helps you monitor, understand, and optimize energy across your entire operation — so your business can do more with less.</p>
+        <div class="hero-buttons"><a class="btn btn-dark" href="#contact">Explore the platform <span>↗</span></a><a class="btn btn-light" href="#platform">See how it works <span>↓</span></a></div>
+        <div class="proof"><div class="avatars"><span class="avatar">AM</span><span class="avatar">JR</span><span class="avatar">SK</span><span class="avatar">+</span></div><span>Built for teams making <strong>every watt count.</strong></span></div>
+      </div>
+      <div class="visual" aria-label="Illustration of the GreenGrid energy dashboard">
+        <div class="orb"></div>
+        <div class="float-card float-top"><div class="float-label"><span class="energy-icon">↗</span>Energy saved this month</div><div class="float-value">18.6% <small>↑ 4.2%</small></div></div>
+        <div class="dashboard">
+          <div class="dash-head"><div><div class="dash-title">Energy overview</div><div class="dash-sub">Facility network · Live data</div></div><div class="live">LIVE</div></div>
+          <div class="metrics">
+            <div class="metric"><div class="metric-label">Total consumption</div><div class="metric-value">248 <small style="font-size:10px;color:#859389">MWh</small></div><div class="metric-foot">↓ 12.8% vs. last month</div></div>
+            <div class="metric"><div class="metric-label">Energy spend</div><div class="metric-value">$32.4k</div><div class="metric-foot">↓ 8.4% this month</div></div>
+            <div class="metric"><div class="metric-label">Renewables</div><div class="metric-value">64%</div><div class="metric-foot neutral">+6.2% this quarter</div></div>
+          </div>
+          <div class="chart-box"><div class="chart-head"><strong>Consumption trends</strong><span>Last 7 days⌄</span></div>
+            <svg class="chart" viewBox="0 0 440 155" role="img" aria-label="Energy consumption trend line chart">
+              <defs><linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#83b98a" stop-opacity=".27"/><stop offset="100%" stop-color="#83b98a" stop-opacity="0"/></linearGradient></defs>
+              <path class="chart-grid" d="M0 20H440M0 58H440M0 96H440M0 134H440"/>
+              <path class="chart-area" d="M0 94 C22 89 28 65 54 72 S91 110 112 88 S151 40 173 57 S207 93 230 74 S268 29 289 42 S323 85 347 69 S388 40 410 47 L440 31 V140H0Z"/>
+              <path class="chart-line2" d="M0 107 C40 99 62 89 90 93 S144 77 173 82 S222 70 250 76 S302 61 330 65 S388 54 440 58"/>
+              <path class="chart-line" d="M0 94 C22 89 28 65 54 72 S91 110 112 88 S151 40 173 57 S207 93 230 74 S268 29 289 42 S323 85 347 69 S388 40 410 47 L440 31"/>
+              <g fill="#91a096" font-size="9"><text x="0" y="152">Mon</text><text x="70" y="152">Tue</text><text x="140" y="152">Wed</text><text x="210" y="152">Thu</text><text x="280" y="152">Fri</text><text x="350" y="152">Sat</text><text x="416" y="152">Sun</text></g>
+              <circle cx="289" cy="42" r="4" fill="#fff" stroke="#4e9568" stroke-width="2.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="float-card float-bottom"><div class="float-label">Carbon avoided</div><div class="float-value">42.8 <small>tCO₂e</small></div></div>
+      </div>
+    </section>
+    <section class="trust"><div class="wrap"><p>Powering progress across industries</p><div class="logos"><span><i>◈</i> NORTHSTAR</span><span><i>✳</i> verdant</span><span><i>▥</i> GRIDWORKS</span><span><i>◉</i> everfield</span><span><i>⌁</i> SOLSTICE</span></div></div></section>
+    <section class="section wrap" id="solutions">
+      <div class="section-head"><div class="kicker">A smarter energy stack</div><h2>Everything connected.<br>Nothing overlooked.</h2><p>From the meter to the monthly report, bring your energy data together and turn complexity into confident action.</p></div>
+      <div class="features">
+        <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18M7 14l4-4 3 3 6-7"/><path d="M16 6h4v4"/></svg></div><h3>Real-time monitoring</h3><p>See consumption across buildings, assets, and meters in one intuitive dashboard. Spot anomalies early and act before they become costly.</p></article>
+        <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Intelligent optimization</h3><p>Turn usage patterns into practical recommendations. Reduce waste, balance demand, and make smarter decisions with predictive insights.</p></article>
+        <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h4"/></svg></div><h3>Utility billing &amp; procurement</h3><p>Bring invoices, purchase orders, and payment tracking into one workflow. Verify charges and simplify energy procurement from start to finish.</p></article>
+        <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3Z"/><path d="m8 12 2.5 2.5L16 9"/></svg></div><h3>Reliable, secure data</h3><p>Make decisions with confidence. Consistent data pipelines and clear audit trails help keep your energy information dependable.</p></article>
+        <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h18M12 3v18M5 5l14 14M19 5 5 19"/><circle cx="12" cy="12" r="8"/></svg></div><h3>Grid &amp; renewable integration</h3><p>Connect distributed energy resources, on-site generation, and grid signals to coordinate a more flexible, resilient energy strategy.</p></article>
+        <article class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5m0 14h17M8 15l3-4 3 2 5-7"/><path d="M16 6h3v3"/></svg></div><h3>Reporting that moves you forward</h3><p>Track progress against goals with clear, shareable reports for operations, finance, and sustainability stakeholders.</p></article>
+      </div>
+    </section>
+    <section class="section platform" id="platform"><div class="wrap platform-grid">
+      <div><div class="kicker">One platform. Clearer decisions.</div><h2>Your whole energy picture, finally in focus.</h2><p class="platform-copy">GreenGrid unifies facility data, utility information, and renewable sources in a single energy management information system. Understand what’s happening now — and what to do next.</p>
+        <div class="check-list"><div class="check"><b>✓</b> Monitor performance across every facility</div><div class="check"><b>✓</b> Identify opportunities to reduce energy costs</div><div class="check"><b>✓</b> Connect utility, grid, and renewable data</div><div class="check"><b>✓</b> Keep teams aligned with actionable reporting</div></div>
+        <a class="btn" style="background:var(--lime);color:#183e30" href="#contact">Discover the platform ↗</a>
+      </div>
+      <div class="platform-visual"><div class="dash-head"><div><div class="dash-title">Portfolio performance</div><div class="dash-sub">All facilities · September 2026</div></div><div class="live">ON TRACK</div></div>
+        <div class="usage-row"><span>Monthly energy target</span><strong>72% achieved</strong></div><div class="bar"><span style="width:72%"></span></div>
+        <div class="usage-row"><span>Renewable energy mix</span><strong>64%</strong></div><div class="bar"><span style="width:64%"></span></div>
+        <div class="usage-row"><span>Carbon reduction goal</span><strong>58% achieved</strong></div><div class="bar"><span style="width:58%"></span></div>
+        <div class="facility-list"><div class="facility"><div>⌂ &nbsp; Westside Operations<small>Energy intensity · 84 kWh/m²</small></div><span class="status">● Optimized</span></div><div class="facility"><div>⌂ &nbsp; Central Distribution<small>Energy intensity · 102 kWh/m²</small></div><span class="status">● On track</span></div><div class="facility"><div>⌂ &nbsp; North Campus<small>Energy intensity · 76 kWh/m²</small></div><span class="status">● Optimized</span></div></div>
+      </div>
+    </div></section>
+    <section class="wrap stats" id="impact"><div class="stat"><strong>24/7</strong><span>Visibility into energy use</span></div><div class="stat"><strong>1 view</strong><span>Across your entire portfolio</span></div><div class="stat"><strong>↓ Waste</strong><span>With insight-led optimization</span></div><div class="stat"><strong>Net zero</strong><span>A clearer path to your goals</span></div></section>
+    <section class="cta wrap" id="contact"><div class="cta-card"><h2>Ready to make energy<br>work smarter?</h2><p>Let’s find the opportunities hiding in your energy data. See how GreenGrid can help your team move forward.</p><a class="btn btn-dark" href="mailto:hello@greengrid.example?subject=GreenGrid%20demo%20request">Let’s talk <span>↗</span></a></div></section>
+  </main>
+  <footer id="about"><div class="wrap footer-inner"><a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4c-8 0-14 3-14 10a6 6 0 0 0 6 6c7 0 8-8 8-16Z"/><path d="M4 21c2-5 6-8 12-11"/></svg></span>greengrid</a><div class="footer-note">© 2026 GreenGrid. Energy, in better balance.</div><div class="footer-links"><a href="#about">About</a><a href="#contact">Contact</a><a href="#home">Back to top ↑</a></div></div></footer>
+  <script>
+
+    const intro=document.getElementById('intro');
+    const enterSite=()=>{intro.classList.add('is-leaving');document.body.style.overflow='';};
+    const showIntro=()=>{window.scrollTo({top:0,behavior:'smooth'});intro.classList.remove('is-leaving');document.body.style.overflow='hidden';};
+    document.getElementById('intro-link').addEventListener('click',event=>{event.preventDefault();showIntro();});
+    document.body.style.overflow='hidden';
+    document.getElementById('enter-site').addEventListener('click',enterSite);
+    document.getElementById('view-dashboard').addEventListener('click',()=>{enterSite();setTimeout(()=>document.getElementById('solutions').scrollIntoView({behavior:'smooth'}),120);});
+    document.addEventListener('keydown',event=>{if(event.key==='Enter'&&intro&&!intro.classList.contains('is-leaving'))enterSite();});
+
+    const nav=document.getElementById('nav'),menu=document.getElementById('menu');
+    menu.addEventListener('click',()=>{const open=nav.classList.toggle('mobile-open');menu.setAttribute('aria-expanded',String(open));});
+    document.querySelectorAll('.nav-links a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('mobile-open');menu.setAttribute('aria-expanded','false');}));
+  </script>
+</body>
+</html>
